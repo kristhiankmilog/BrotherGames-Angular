@@ -1,23 +1,23 @@
 import { Group } from "./group";
-import {Clase} from "./vendedor";
+import {Seller} from "./seller";
 
 
-export class Juego{
-    nombre: string;
+export class Game{
+    name: string;
     image: string;
     description: string;
     type: string;
-    calificacion: number;
-    vendedor: Vendedor[];
+    rate: number;
+    seller:Seller[];
 
 
-    constructor(nombre: string, image: string,  description: string, type: string, calificacion: string, vendedor: Vendedor[] ){
+    constructor(name: string, image: string,  description: string, type: string, rate: string, seller: Seller[] ){
         this.nombre = nombre;
         this.image = image;
         this.description = description;
         this.type = type;
-        this.calificacion =calificacion;
-        this.vendedor = vendedor;
+        this.rate =rate;
+        this.seller= seller;
 
     }
 
