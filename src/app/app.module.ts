@@ -8,12 +8,12 @@ import { INITIAL_CONFIG } from './common/config/initial-config';
 import { AppComponent } from './app.component';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { searchGameListPageComponent } from './pages/searchGame-list-page/searchGame-list-page.component';
-import { searchGameEditPageComponent } from './pages/searchGame-edit-page/searchGame-edit-page.component';
+
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { UserEditPageComponent } from './pages/user-edit-page/user-edit-page.component';
 import { UserListPageComponent } from './pages/user-list-page/user-list-page.component';
-
+import { SearchGameListPageComponent} from './pages/searchGame-list-page/searchGame-list-page.component';
+import { SearchGameEditPageComponent} from './pages/searchGame-edit-page/searchGame-edit-page.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -36,11 +36,11 @@ const ROUTES = [
     canActivate: [AuthService],
   },
   {
-    path: 'searchGame', component: searchGameListPageComponent ,
+    path: 'searchGame', component: SearchGameListPageComponent ,
     canActivate: [AuthService],
   },
   {
-    path: 'edit', component: searchGameEditPageComponent ,
+    path: 'edit', component: SearchGameEditPageComponent ,
     canActivate: [AuthService],
   },
   {
@@ -53,8 +53,8 @@ const ROUTES = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    searchGameListPageComponent,
-    searchGameEditPageComponent,
+    SearchGameListPageComponent,
+    SearchGameEditPageComponent,
     PageNotFoundComponent,
     SingInPageComponent,
     UserEditPageComponent,
