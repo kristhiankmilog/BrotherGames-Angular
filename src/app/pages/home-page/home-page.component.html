@@ -1,3 +1,264 @@
-<p>
-  BrotherGames
-</p>
+<style>
+  #login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .8);
+  }
+
+  #login-dp .help-block {
+    font-size: 12px
+  }
+
+  #login-dp .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
+  }
+
+  #login-dp .social-buttons {
+    margin: 12px 0
+  }
+
+  #login-dp .social-buttons a {
+    width: 49%;
+  }
+
+  #login-dp .form-group {
+    margin-bottom: 10px;
+  }
+
+  .btn-fb {
+    color: #fff;
+    background-color: #3b5998;
+  }
+
+  .btn-fb:hover {
+    color: #fff;
+    background-color: #496ebc
+  }
+
+  .btn-tw {
+    color: #fff;
+    background-color: #55acee;
+  }
+
+  .btn-tw:hover {
+    color: #fff;
+    background-color: #59b5fa;
+  }
+
+  @media(max-width:768px) {
+    #login-dp {
+      background-color: inherit;
+      color: #fff;
+    }
+    #login-dp .bottom {
+      background-color: inherit;
+      border-top: 0 none;
+    }
+
+
+
+
+  }
+</style>
+
+<!-- Header -->
+<header class="masthead">
+  <!--  <video loop muted autoplay poster="../video/4.jpg" >
+        <source src="../video/3.webm" type="video/webm">
+        <source src="../video/2.mp4" type="video/mp4">
+        <source src="../video/1.ogg" type="video/ogg">
+    </video> -->
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-lead-in">Welcome To AMARU!</div>
+      <div class="intro-heading">It's Nice To Meet You</div>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <a *ngIf="isLoggedIn()" class="navbar-brand" routerLinkActive="/welcome" routerLink="/welcome">AMARU</a>
+      <a *ngIf="!isLoggedIn()" class="navbar-brand" routerLinkActive="" routerLink="">AMARU</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="nav navbar-nav mr-auto ">
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search Groups" aria-label="Search Groups" #search>
+          <button class="btn btn-xl pull-right" data-toggle="modal" data-target="#myModal" (click)="onSubmit(search.value)">Search</button>
+        </form>
+        
+
+
+      </ul>
+
+      <ul *ngIf="!isLoggedIn()" class="nav navbar-nav navbar-right">
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <b>Login</b>
+            <span class="caret"></span>
+          </a>
+          <ul id="login-dp" class="dropdown-menu pull-left">
+            <li>
+              <div class="row">
+                <div class="col-md-12">
+                  
+                  <form [formGroup]="signInForm" (ngSubmit)="doLogin()" accept-charset="UTF-8" id="login-nav">
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail2" formControlName="username" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputPassword2">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword2" formControlName="password" required>
+                      <div class="help-block text-right">
+                        <a href="">Forget the password ?</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-block" [disabled]="!signInForm.valid">Sign in</button>
+                    </div>
+                    <div class="checkbox">
+                      <p class="btn btn-primary btn-lg" *ngIf="loginError">{{loginError}}</p>
+                      <label>
+                        <input type="checkbox"> keep me logged-in
+                      </label>
+                    </div>
+                  </form>
+                </div>
+                <div class="bottom text-center">
+                  New here ?
+                  <a routerLinkActive="/newuser" routerLink="/newuser">
+                    <b>Join Us</b>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul *ngIf="isLoggedIn()" class="navbar-nav navbar-right">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user"></span>
+            <b>{{user.nombre}}</b>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" style="min-width: 20rem;">
+            <li>
+              <div style="padding: 10px;
+              padding-bottom: 0px;
+              padding-top: 0px;">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <p class="text-center">
+                      <img [src]="user.image" class="img-circle img-responsive" width="87" height="87" />
+                    </p>
+                  </div>
+                  <div class="col-lg-8">
+                    <p class="text-left">
+                      <strong>{{user.nombre}} {{user.lastname}}</strong>
+                    </p>
+                    <p class="text-left small">{{user.email}}</p>
+                    <p class="text-left">
+                      <a a class="nav-link" routerLinkActive="/info" routerLink="/info" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <div style="padding: 10px;
+              padding-bottom: 0px;
+              padding-top: 0px;">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <p>
+                      <a href="#" class="btn btn-danger btn-block" (click)="signOut()">Sign Out</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+
+
+
+  </div>
+
+  <!-- <button class="btn btn-xl pull-right" routerLinkActive="/signin" routerLink="/signin">Iniciar Sesión</button>-->
+
+
+
+
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Result</h4>
+      </div>
+      <div class="modal-body" *ngIf="!longitud()">
+        <p>group not found</p>
+      </div>
+      <div class="modal-body" *ngIf="longitud()">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Photo</th>
+              <th>Instructor</th>
+              <th>Enter To The Group</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let g of group">
+            <td>{{g.nombre}}</td>
+            <td>
+              <img [src]="g.image" width="110" height="110" />
+            </td>
+            <td>{{g.instructor}}</td>
+            <td>
+              <button class="btn btn-outline-success my-2 my-sm-0" data-dismiss="modal" (click)="entergr(g.nombre,g.id)">Enter</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+    </div>
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>

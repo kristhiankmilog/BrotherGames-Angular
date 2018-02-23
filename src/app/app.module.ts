@@ -8,8 +8,8 @@ import { INITIAL_CONFIG } from './common/config/initial-config';
 import { AppComponent } from './app.component';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { TaskListPageComponent } from './pages/task-list-page/task-list-page.component';
-import { TaskEditPageComponent } from './pages/task-edit-page/task-edit-page.component';
+import { searchGameListPageComponent } from './pages/searchGame-list-page/searchGame-list-page.component';
+import { searchGameEditPageComponent } from './pages/searchGame-edit-page/searchGame-edit-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { UserEditPageComponent } from './pages/user-edit-page/user-edit-page.component';
 import { UserListPageComponent } from './pages/user-list-page/user-list-page.component';
@@ -36,11 +36,11 @@ const ROUTES = [
     canActivate: [AuthService],
   },
   {
-    path: 'tasks', component: TaskListPageComponent ,
+    path: 'searchGame', component: searchGameListPageComponent ,
     canActivate: [AuthService],
   },
   {
-    path: 'edit', component: TaskEditPageComponent ,
+    path: 'edit', component: searchGameEditPageComponent ,
     canActivate: [AuthService],
   },
   {
@@ -53,8 +53,8 @@ const ROUTES = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    TaskListPageComponent,
-    TaskEditPageComponent,
+    searchGameListPageComponent,
+    searchGameEditPageComponent,
     PageNotFoundComponent,
     SingInPageComponent,
     UserEditPageComponent,
