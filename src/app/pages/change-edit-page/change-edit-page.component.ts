@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeService } from '../../services/change.service';
+import {UsersService} from'../../services/users.service';
 import { Change } from '../../models/change';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ChangeEditPageComponent implements OnInit {
   changeForm: FormGroup;
-  constructor(public changeService: ChangeService,
+  constructor(public usersService: UsersService,
     public formBuilder: FormBuilder,
     public router: Router
   ) {
@@ -30,7 +30,7 @@ export class ChangeEditPageComponent implements OnInit {
 }
 
 onSubmit() {
-  this.changeService.create(
+  this.usersService.createChange(
     this.changeForm.get('nameGame').value,
     this.changeForm.get('description').value,
     this.changeForm.get('image').value,
