@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UsersService} from'../../services/users.service';
 import { Change } from '../../models/change';
+import { Requests } from '../../models/requests';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ChangeListPageComponent implements OnInit {
   private changes: Change[] = [];
+  private listRequests: Requests[] = [];
+
   constructor(public usersService: UsersService, public router: Router) {
     
   }
@@ -18,6 +21,11 @@ export class ChangeListPageComponent implements OnInit {
     this.usersService.listChanges().subscribe(userResponse => {
     this.changes = userResponse;
       })
+
+    this.usersService.listRequests().subscribe(userResponse => {
+    this.listRequests = userResponse;
+      })
+
   }
 
   

@@ -8,6 +8,7 @@ import { User } from "../models/user";
 import { Change } from '../models/change';
 
 import 'rxjs/add/observable/of';
+import { Requests } from "../models/requests";
 
 @Injectable()
 export class UsersService extends APIService {
@@ -56,6 +57,10 @@ constructor(
 
   listAllChanges(): Observable<Change[]> {
     return this.get('user/changes');
+  }
+
+  listRequests(): Observable<Requests[]> {
+    return this.get('user/requests');
   }
 
 }

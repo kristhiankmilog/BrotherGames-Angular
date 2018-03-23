@@ -17,3 +17,23 @@
    <td>{{change.state}}</td>
  </tr>
 </table>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>User Game</th>
+      <th>Your Game</th>
+      <th>state</th>
+      <th>request</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let requests of listRequests">
+    <td>{{requests.userRq.firstname}}</td>
+    <td><img [src]="requests.change1.image" width="150" height="150" /></td>
+    <td><img [src]="requests.change2.image" width="150" height="150" /></td>
+    <td>{{requests.state}}</td>
+    <td><button (click)="myEvent($event)" type="submit" class="btn btn-success">Accept</button></td>
+
+  </tr>
+ </table>
