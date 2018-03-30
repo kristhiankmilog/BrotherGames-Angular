@@ -12,5 +12,12 @@
     <td>{{change.description}}</td>
     <td><img [src]="change.image" width="150" height="150" /></td>
     <td><button (click)="myEvent($event)" type="submit" class="btn btn-success">Exchange</button></td>
+    <td><span>count: {{count}}</span></td>
+    <td><button ng-click="count = count + 1" ng-init="count=0">Increment</button>    </td>
+
+    
+    
+    
+        
  </tr>
 </table>

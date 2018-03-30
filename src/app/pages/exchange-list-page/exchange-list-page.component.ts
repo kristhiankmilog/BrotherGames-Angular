@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ChangeOkListPageComponent } from '../change-list-page/changeOk-list-page.component';
 import { Change } from '../../models/change';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -25,7 +25,7 @@ export class ExchangeListComponent implements OnInit {
         })
     }
 
-  myEvent(event) {
+  myEvent(event,change:Change) {
     this.router.navigate(['/okChanges']);
   }
 

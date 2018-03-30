@@ -22,9 +22,9 @@ export class ChangeListPageComponent implements OnInit {
     this.changes = userResponse;
       })
 
-    this.usersService.listRequests().subscribe(userResponse => {
-    this.listRequests = userResponse;
-      })
+    //this.usersService.listRequests().subscribe(userResponse => {
+    //this.listRequests = userResponse;
+    //  })
 
   }
 

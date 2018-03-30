@@ -59,8 +59,12 @@ constructor(
     return this.get('user/changes');
   }
 
+  createRequests(userRq:User,change1:Change,change2:Change):Observable<Requests>{
+    return this.post('user/requests/Camilo',new Requests(userRq,change1,change2));
+  }
+
   listRequests(): Observable<Requests[]> {
-    return this.get('user/requests');
+    return this.get('user/requests/Camilo');
   }
 
 }
