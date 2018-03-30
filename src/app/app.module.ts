@@ -15,15 +15,15 @@ import { ChangeEditPageComponent } from './pages/change-edit-page/change-edit-pa
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { UserEditPageComponent } from './pages/user-edit-page/user-edit-page.component';
 import { UserListPageComponent } from './pages/user-list-page/user-list-page.component';
-<<<<<<< HEAD
+
 import { ExchangeListComponent } from './pages/exchange-list-page/exchange-list-page.component';
 import { ChangeOkListPageComponent } from './pages/change-list-page/changeOk-list-page.component';
 import { CodeAcceptPageComponent } from './pages/code-accept-page/code-accept-page.component';
-=======
+
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 
->>>>>>> ProfileConfiguration
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -98,17 +98,17 @@ const ROUTES = [
       UserEditPageComponent,
       UserListPageComponent,
       RegisterComponent,
-<<<<<<< HEAD
+
       ChangeListPageComponent,
       ExchangeListComponent,
       ChangeOkListPageComponent,
       CodeAcceptPageComponent,
       ChangeEditPageComponent,
 
-=======
+
       ProfilePageComponent,
       EditProfilePageComponent,
->>>>>>> ProfileConfiguration
+
   ],
   imports: [
     BrowserModule,
