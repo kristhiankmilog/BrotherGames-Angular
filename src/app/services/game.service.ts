@@ -10,7 +10,7 @@ import {Seller} from "../models/seller";
 import 'rxjs/add/observable/of';
 @Injectable()
 export class GameService extends APIService{
-private resourceUrl='api/game';
+private resourceUrl='api/searchGame/';
 private game:Game;
 
     constructor(
@@ -25,19 +25,13 @@ private game:Game;
             return this.get(this.resourceUrl+name);
 
     }
-    getTop(rate:number):Observable<Game>{
-        return this.get(this.resourceUrl+rate);
+    getTop():Observable<Game[]>{
+        return this.get(this.resourceUrl+top);
     }
 
     registerCommentByGame(value0:string,value1:string,value2:number):Observable<Game>{
 
         return this.post(this.resourceUrl+"game",new Comment(value0,value1,value2,2));
 
-    }
-    create1(id:number,name: string, image: string,comment:Comment[],  description: string, rate: number, seller: Seller[]):Observable<Game>{
-        return this.post(this.resourceUrl+"games",new Game(id,name,image,comment,description,rate,seller));
-    }
-    editRate(id: number, rate: number):Observable<Game>{
-        return this.post(this.resourceUrl + 'rate',{id,rate});
     }
 }

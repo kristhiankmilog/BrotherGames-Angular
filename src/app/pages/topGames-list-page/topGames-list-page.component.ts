@@ -27,8 +27,9 @@ export class TopGamesListPageComponent implements OnInit {
 
 
     ngOnInit() {
-        this.gameService.getTop(1);
-    }
+           this.gameService.getTop().subscribe(gameResponse => {
+                  this.games=gameResponse;
+    })}
 
 
 

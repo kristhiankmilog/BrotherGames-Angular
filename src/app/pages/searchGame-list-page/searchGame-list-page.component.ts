@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./searchGame-list-page.component.css']
 })
 export class SearchGameListPageComponent implements OnInit {
+    name:string;
+    private game:Game
     private  comm:Comment[]=[new Comment('Exelente juego lo recomiendo para PSP','Laura Sanchez',5,1)];
     private seller1:Seller[]=[new Seller('$359.900 ','www.Nintendo.com'),new Seller('$500 000 ','listado.mercadolibre.com.mx/juegos-de-mario-bros-gratis')];
      private games: Game[] = [new Game(1,'Super Mario Bros.','/assets/images/mario.jpg ',this.comm,'Is a platform video game, designed by Shigeru Miyamoto, released on September 13, 1985 and produced by the company Nintendo, for the Nintendo Entertainment System (NES). The game describes the adventures of brothers Mario and Luigi, characters who already starred in the arcade Mario Bros. of 1983.' +
@@ -24,7 +26,9 @@ export class SearchGameListPageComponent implements OnInit {
 
       ngOnInit() {
 
-            this.gameService.getGame('sss');
-        }
+            this.gameService.getGame(this.name).subscribe(gameResponse => {
+                  this.game=gameResponse;
+      })}
       }
+      
 
