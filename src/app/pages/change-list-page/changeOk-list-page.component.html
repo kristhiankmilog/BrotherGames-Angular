@@ -1,0 +1,17 @@
+<h2>My List Exchanges</h2>
+<table class="table table-bordered">
+ <thead>
+   <tr>
+     <th>nameGame</th>
+     <th>description</th>
+     <th>image</th>
+     <th>Add</th>
+   </tr>
+ </thead>
+ <tr *ngFor="let change of changes">
+   <td>{{change.nameGame}}</td>
+   <td>{{change.description}}</td>
+   <td><img [src]="change.image" width="150" height="150" /></td>
+   <td><button (click)="myEvent($event)" type="submit" class="btn btn-success">Exchange</button></td>
+ </tr>
+</table>

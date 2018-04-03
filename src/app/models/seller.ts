@@ -1,11 +1,11 @@
 export class Seller{
-    contact: string;
-    page: string;
+    price: string;
+    link: string;
 
 
-    constructor(contact: string,page ){
-        this.contact = contact;
-        this.page = page;
+    constructor(price: string,link ){
+        this.price = price;
+        this.link = link;
 
     }
 

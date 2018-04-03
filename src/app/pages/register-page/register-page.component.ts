@@ -26,21 +26,25 @@ export class RegisterComponent implements OnInit {
             username: '',
             email: '',
             password: '',
+            image: '',
+            description: ''
         });
     }
 
     onSubmit() {
-        this.todoUser.create(
+        this.todoUser.registerUser(
         this.registerForm.get('username').value,
         this.registerForm.get('email').value,
-        this.registerForm.get('password').value
+        this.registerForm.get('password').value,
+        this.registerForm.get('image').value,
+        this.registerForm.get('description').value
         ).subscribe(serverResponse=>{
-            this.router.navigate(['/users']);
+            this.router.navigate(['/signin']);
         }, error=>{
         console.log(error);
         });
 
 
-  this.router.navigate(['/users']);
+  this.router.navigate(['/signin']);
 }
 }

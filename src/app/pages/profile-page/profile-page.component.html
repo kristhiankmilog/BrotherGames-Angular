@@ -1,0 +1,36 @@
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container">
+    <form [formGroup]="userForm">
+        <div>
+            <img src={{user.image}} width="250" height="250" />
+        </div>
+        <br>
+        <br>
+        <div>
+            <p for="firstname"> <b>Name:</b></p>
+            <label id="firstname">{{user.firstname}} {{user.lastname}}</label>
+        </div>
+
+        <div>
+            <p for="email"><b>Email:</b></p>
+            <label id="email">{{user.email}}</label>
+        </div>
+
+        <div>
+            <p for="username"><b>Username:</b></p>
+            <label id="username">{{user.username}}</label>
+        </div>
+
+        <div>
+            <p for="aboutYou"><b>About me:</b></p>
+            <label id="aboutYou">{{user.description}}</label>
+        </div>
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary" routerLinkActive="/editProfile" routerLink="/editProfile">Edit Profile</button>
+    </form>
+
+</div>

@@ -23,16 +23,16 @@ export class SignInPageComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      username: '',
+      email: '',
       password: '',
     });
   }
 
   doLogin() {
     this.usersService.login(
-      this.signInForm.get('username').value,
+      this.signInForm.get('email').value,
       this.signInForm.get('password').value).subscribe(loginResponse => {
-        this.router.navigate(['tasks']);
+        this.router.navigate(['/']);
       }, error => {
         this.loginError = 'Error Signing in: ' + (error && error.message ? error.message : '');
       });

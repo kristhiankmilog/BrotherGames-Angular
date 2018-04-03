@@ -1,0 +1,16 @@
+<h2>Tasks</h2>
+<table class="table table-bordered">
+ <thead>
+   <tr>
+     <th>Name Game</th>
+     <th>Description</th>
+     <th>Image</th>
+   </tr>
+ </thead>
+ <tr *ngFor="let change of exchanges">
+    <td>{{change.nameGame}}</td>
+    <td>{{change.description}}</td>
+    <td><img [src]="change.image" width="150" height="150" /></td>
+    <td><button (click)="myEvent($event)" type="submit" class="btn btn-success">Exchange</button></td>
+ </tr>
+</table>

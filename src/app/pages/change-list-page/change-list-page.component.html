@@ -1,0 +1,19 @@
+<h2>My List Exchanges</h2>
+<table class="table table-bordered">
+ <thead>
+   <tr>
+     <th>id</th>
+     <th>nameGame</th>
+     <th>description</th>
+     <th>image</th>
+     <th>state</th>
+   </tr>
+ </thead>
+ <tr *ngFor="let change of changes">
+   <td>{{change.id}}</td>
+   <td>{{change.nameGame}}</td>
+   <td>{{change.description}}</td>
+   <td><img [src]="change.image" width="150" height="150" /></td>
+   <td>{{change.state}}</td>
+ </tr>
+</table>

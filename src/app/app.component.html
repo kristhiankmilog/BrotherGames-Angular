@@ -9,14 +9,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="/" routerLink="/">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="/users" routerLink="/users">Profile</a>
+      <li *ngIf="isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLinkActive="/profile" routerLink="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="/searchGames" routerLink="/searchGames">Games <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLinkActive="/topGames" routerLink="/topGames">Games <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="/edit" routerLink="/edit">Games Exchange</a>
+      <li *ngIf="isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLinkActive="/listexChanges" routerLink="/listexChanges">Games Exchange</a>
+      </li>
+      <li *ngIf="isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLinkActive="/listChanges" routerLink="/listChanges">List Games Exchange</a>
+      </li>      <li *ngIf="isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLinkActive="/editChanges" routerLink="/editChanges">Edit Games Exchange</a>
       </li>
       <li *ngIf="isLoggedIn()" class="nav-item">
         <a href="#" class="nav-link" (click)="signOut()">(Sign Out)</a>
@@ -34,9 +39,6 @@
             <a class="nav-link" routerLinkActive="/signin" routerLink="/signin">SIGN IN<span class="sr-only">(current)</span></a>
           </li>
 
-          <li *ngIf="isLoggedIn()" class="nav-item active">
-            <a class="nav-link"  routerLinkActive="/editUsers" routerLink="/editUsers">Profile<span class="sr-only">(current)</span></a>
-          </li>
         </ul>
     </form>
 

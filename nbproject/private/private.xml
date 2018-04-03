@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/models/comment.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/models/change.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/models/game.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/services/game.service.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/pages/searchGame-list-page/searchGame-list-page.component.html</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/pages/comments-edit-page/comments-edit-page.component.html</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/pages/change-edit-page/change-edit-page.component.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/services/todo.service.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/pages/user-edit-page/user-edit-page.component.ts</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/pages/change-edit-page/change-edit-page.component.html</file>
+            <file>file:/C:/Users/Kazu/Desktop/cosw/BrotherGames-Angular/src/app/common/auth.service.ts</file>
+        </group>
+    </open-files>
+</project-private>
