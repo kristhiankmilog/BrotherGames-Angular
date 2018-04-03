@@ -1,0 +1,19 @@
+<h2>5 OF THE BEST GAMES OF THE MONTH</h2>
+<table class="table table-bordered">
+ <thead>
+   <tr>
+       <th></th>
+       <th>Name</th>
+     <th>Description</th>
+   
+   </tr>
+   <tr *ngFor="let newGame of newGames">
+       <td><img [src]="newGame.photo" width="150" height="150" /></td>
+       <td>{{newGame.name}}</td>
+    <td>{{newGame.description}}</td>
+
+  
+   </tr>
+ </thead>
+
+</table>

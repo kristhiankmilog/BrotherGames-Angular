@@ -13,22 +13,18 @@
         <a class="nav-link" routerLinkActive="/profile" routerLink="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="/searchGames" routerLink="/searchGames">Games</a>
+        <a class="nav-link" routerLinkActive="/searchGames" routerLink="/searchGames">Games <span class="sr-only">(current)</span></a>
       </li>
-<<<<<<< HEAD
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="/listChanges" routerLink="/listChanges">Games Exchange</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="/editChanges" routerLink="/editChanges">New Exchange</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="/listexChanges" routerLink="/listexChanges">List Exchange</a>
-=======
       <li *ngIf="isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLinkActive="/edit" routerLink="/edit">Games Exchange</a>
->>>>>>> ProfileConfiguration
+        <a class="nav-link" routerLinkActive="/listexChanges" routerLink="/listexChanges">Games Exchange</a>
       </li>
+      
+
       <li *ngIf="isLoggedIn()" class="nav-item">
         <a href="#" class="nav-link" (click)="signOut()">(Sign Out)</a>
       </li>

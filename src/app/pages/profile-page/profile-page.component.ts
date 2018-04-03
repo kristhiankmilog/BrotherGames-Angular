@@ -31,26 +31,17 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(){
 
-    this.userService.getUser('prueba2@mail.com').subscribe(data => {
+      var data= sessionStorage.getItem("email");
+      this.userService.getUser(data).subscribe(todosResponse=>{
 
-      this.user = data;
+          this.user= todosResponse;
 
-      }, error => {
-
-        console.log("error");
+          this.router.navigate(['profile']);
 
       });
 
-    this.userForm = this.formBuilder.group({
 
-        firstname:'',
-        lastname:'',
-        email:'',
-        username:'',
-        aboutYou:'',
-        image:''
 
-        });
 
   }
 

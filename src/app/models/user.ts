@@ -94,7 +94,6 @@ private listRequests: Requests[] = [];
 
       this._password = value;
 
-
     }
     
 }

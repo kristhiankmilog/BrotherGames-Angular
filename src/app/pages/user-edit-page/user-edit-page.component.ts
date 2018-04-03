@@ -25,7 +25,8 @@ export class UserEditPageComponent implements OnInit {
     lastname: '',
     image: '',
     username:'',
-    description:''
+    description:'',
+        email: ''
   });
 
 }
@@ -37,6 +38,7 @@ onSubmit() {
     this.todoForm.get('image').value,
     this.todoForm.get('username').value,
     this.todoForm.get('description').value,
+      this.todoForm.get('email').value
   ).subscribe(serverResponse=>{
       this.router.navigate(['/users']);
   }, error=>{

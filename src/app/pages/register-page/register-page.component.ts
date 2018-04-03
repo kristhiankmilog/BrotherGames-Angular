@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
+            firstname:'',
             username: '',
             email: '',
             password: '',
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.todoUser.registerUser(
+            this.registerForm.get('firstname').value,
         this.registerForm.get('username').value,
         this.registerForm.get('email').value,
         this.registerForm.get('password').value,

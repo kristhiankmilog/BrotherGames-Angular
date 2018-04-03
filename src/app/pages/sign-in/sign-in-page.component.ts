@@ -33,8 +33,13 @@ export class SignInPageComponent implements OnInit {
       this.signInForm.get('email').value,
       this.signInForm.get('password').value).subscribe(loginResponse => {
         this.router.navigate(['/']);
+        sessionStorage.setItem("email", this.signInForm.get('email').value);
+
+        var data=this.usersService.getUser( this.signInForm.get('email').value);
+        console.log(data+this.signInForm.get("email").value);
       }, error => {
         this.loginError = 'Error Signing in: ' + (error && error.message ? error.message : '');
       });
+
   }
 }
