@@ -10,7 +10,7 @@ import {Seller} from "../models/seller";
 import 'rxjs/add/observable/of';
 @Injectable()
 export class GameService extends APIService{
-private resourceUrl='api/searchGame/';
+private resourceUrl='searchGame/';
 private game:Game;
 
     constructor(

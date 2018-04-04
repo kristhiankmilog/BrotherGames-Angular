@@ -17,55 +17,16 @@
                 <h2> </h2>
                 <table class="table table-bordered">
                     <thead>
-                    <tr *ngFor="let game of games">
+
                         <th> RATE = {{game.rateAcum}}</th>
                         <th>{{game.name}}</th>
-
-
-
-
-                    </tr>
+                        <th>{{game.description}}</th>
+                        <td><img [src]= game.photo width="150" height="150" /></td>
 
                     </thead>
-                    <tr *ngFor="let game of games">
-                        <td><img [src]="game.image" width="150" height="150" /></td>
-                        <td>{{game.description}}</td>
-                                          </tr>
 
                 </table>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr >
 
-                        <th>PRICE</th>
-                        <th>LINK</th>
-
-
-
-                    </tr>
-
-                    </thead>
-                    <tr *ngFor="let seller of seller1">
-                        <td>{{seller.price}}</td>
-                        <td><a href="https://{{seller.link}}">{{seller.link}}</a></td>
-
-
-                    </tr>
-
-                </table>
-                <h2>COMMENTS </h2>
-                <table>
-                    <thead >
-                    <tr *ngFor="let comment of comm">
-                        <th>{{comment.content}},user: {{comment.user}}</th>
-
-
-
-                    </tr>
-                    </thead>
-
-
-                </table>
 
                 <button type="button" class="btn btn-primary" routerLinkActive="/comments" routerLink="/comments">Comments ++</button>
 

@@ -10,15 +10,14 @@
 <div class="jumbotron text-center">
     <h1>Brother Games</h1>
     <p>Search Game</p>
-    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" novalidate>
-        <div class="input-group">
+    <form [formGroup]="homeForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
             <input type="text" class="form-control" size="50" id="name" placeholder="Search Game" required>
-            <div class="input-group-btn">
 
-                <button type="button" class="btn btn-info" routerLinkActive="/searchGame" routerLink="/searchGame"[disabled]="!searchForm.valid">REGISTER>Search</button>
+
+                <button type="submit" class="btn btn-success" >Search</button>
 
             </div>
-        </div>
     </form>
 </div>
 

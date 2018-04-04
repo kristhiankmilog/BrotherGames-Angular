@@ -1238,7 +1238,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/home-page/home-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/css?family=Montserrat\" rel=\"stylesheet\" type=\"text/css\">\r\n    <link href=\"https://fonts.googleapis.com/css?family=Lato\" rel=\"stylesheet\" type=\"text/css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\r\n</head>\r\n\r\n\r\n<div class=\"jumbotron text-center\">\r\n    <h1>Brother Games</h1>\r\n    <p>Search Game</p>\r\n    <form [formGroup]=\"searchForm\" (ngSubmit)=\"onSubmit()\" novalidate>\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" class=\"form-control\" size=\"50\" id=\"name\" placeholder=\"Search Game\" required>\r\n            <div class=\"input-group-btn\">\r\n\r\n                <button type=\"button\" class=\"btn btn-info\" routerLinkActive=\"/searchGame\" routerLink=\"/searchGame\"[disabled]=\"!searchForm.valid\">REGISTER>Search</button>\r\n\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n<div id=\"about\" class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-8\">\r\n            <h2>About Brother Games </h2><br>\r\n            <h4>On this page you can search, consult and exchange the video games you want, in addition to consulting the prices of each of them in the different internet gaming platforms.</h4>\r\n            <br>\r\n            <h4>To be able to exchange a game you must first register to be able to log in and make the exchange</h4>\r\n\r\n        </div>\r\n\r\n        <div id=\"centerbrand\">\r\n\r\n            <img id=\"brand\"  src=\"/assets/images/videojuegos.jpg\" width=\"300\" height=\"200\">\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/css?family=Montserrat\" rel=\"stylesheet\" type=\"text/css\">\r\n    <link href=\"https://fonts.googleapis.com/css?family=Lato\" rel=\"stylesheet\" type=\"text/css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\r\n</head>\r\n\r\n\r\n<div class=\"jumbotron text-center\">\r\n    <h1>Brother Games</h1>\r\n    <p>Search Game</p>\r\n    <form [formGroup]=\"homeForm\" (ngSubmit)=\"onSubmit()\" novalidate>\r\n        <div class=\"form-group\">\r\n            <input type=\"text\" class=\"form-control\" size=\"50\" id=\"name\" placeholder=\"Search Game\" required>\r\n\r\n\r\n                <button type=\"submit\" class=\"btn btn-success\" >Search</button>\r\n\r\n            </div>\r\n    </form>\r\n</div>\r\n\r\n<div id=\"about\" class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-8\">\r\n            <h2>About Brother Games </h2><br>\r\n            <h4>On this page you can search, consult and exchange the video games you want, in addition to consulting the prices of each of them in the different internet gaming platforms.</h4>\r\n            <br>\r\n            <h4>To be able to exchange a game you must first register to be able to log in and make the exchange</h4>\r\n\r\n        </div>\r\n\r\n        <div id=\"centerbrand\">\r\n\r\n            <img id=\"brand\"  src=\"/assets/images/videojuegos.jpg\" width=\"300\" height=\"200\">\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1248,6 +1248,9 @@ module.exports = "\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/cs
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_game_service__ = __webpack_require__("../../../../../src/app/services/game.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1258,10 +1261,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var HomePageComponent = (function () {
-    function HomePageComponent() {
+    function HomePageComponent(gameService, formBuilder, router) {
+        this.gameService = gameService;
+        this.formBuilder = formBuilder;
+        this.router = router;
     }
     HomePageComponent.prototype.ngOnInit = function () {
+        this.homeForm = this.formBuilder.group({
+            name: '',
+        });
+    };
+    HomePageComponent.prototype.onSubmit = function () {
+        sessionStorage.setItem('name', this.homeForm.get('name').value);
+        this.router.navigate(['/searchGame']);
     };
     return HomePageComponent;
 }());
@@ -1271,9 +1287,10 @@ HomePageComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/home-page/home-page.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/home-page/home-page.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]) === "function" && _c || Object])
 ], HomePageComponent);
 
+var _a, _b, _c;
 //# sourceMappingURL=home-page.component.js.map
 
 /***/ }),
@@ -1533,7 +1550,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/searchGame-list-page/searchGame-list-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<script src=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>\r\n<script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>\r\n<!------ Include the above in your HEAD tag ---------->\r\n\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"panel panel-default\">\r\n            <div class=\"panel-heading\">\r\n            <div class=\"panel-body\">\r\n\r\n              <hr>\r\n                <ul class=\"container details\" >\r\n\r\n                </ul>\r\n                <hr>\r\n                <h2> </h2>\r\n                <table class=\"table table-bordered\">\r\n                    <thead>\r\n                    <tr *ngFor=\"let game of games\">\r\n                        <th> RATE = {{game.rateAcum}}</th>\r\n                        <th>{{game.name}}</th>\r\n\r\n\r\n\r\n\r\n                    </tr>\r\n\r\n                    </thead>\r\n                    <tr *ngFor=\"let game of games\">\r\n                        <td><img [src]=\"game.image\" width=\"150\" height=\"150\" /></td>\r\n                        <td>{{game.description}}</td>\r\n                                          </tr>\r\n\r\n                </table>\r\n                <table class=\"table table-bordered\">\r\n                    <thead>\r\n                    <tr >\r\n\r\n                        <th>PRICE</th>\r\n                        <th>LINK</th>\r\n\r\n\r\n\r\n                    </tr>\r\n\r\n                    </thead>\r\n                    <tr *ngFor=\"let seller of seller1\">\r\n                        <td>{{seller.price}}</td>\r\n                        <td><a href=\"https://{{seller.link}}\">{{seller.link}}</a></td>\r\n\r\n\r\n                    </tr>\r\n\r\n                </table>\r\n                <h2>COMMENTS </h2>\r\n                <table>\r\n                    <thead >\r\n                    <tr *ngFor=\"let comment of comm\">\r\n                        <th>{{comment.content}},user: {{comment.user}}</th>\r\n\r\n\r\n\r\n                    </tr>\r\n                    </thead>\r\n\r\n\r\n                </table>\r\n\r\n                <button type=\"button\" class=\"btn btn-primary\" routerLinkActive=\"/comments\" routerLink=\"/comments\">Comments ++</button>\r\n\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "\r\n<script src=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js\"></script>\r\n<script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>\r\n<!------ Include the above in your HEAD tag ---------->\r\n\r\n<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"panel panel-default\">\r\n            <div class=\"panel-heading\">\r\n            <div class=\"panel-body\">\r\n\r\n              <hr>\r\n                <ul class=\"container details\" >\r\n\r\n                </ul>\r\n                <hr>\r\n                <h2> </h2>\r\n                <table class=\"table table-bordered\">\r\n                    <thead>\r\n\r\n                        <th> RATE = {{game.rateAcum}}</th>\r\n                        <th>{{game.name}}</th>\r\n                        <th>{{game.description}}</th>\r\n                        <td><img [src]= game.photo width=\"150\" height=\"150\" /></td>\r\n\r\n                    </thead>\r\n\r\n                </table>\r\n\r\n\r\n                <button type=\"button\" class=\"btn btn-primary\" routerLinkActive=\"/comments\" routerLink=\"/comments\">Comments ++</button>\r\n\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1543,11 +1560,8 @@ module.exports = "\r\n<script src=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchGameListPageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_game__ = __webpack_require__("../../../../../src/app/models/game.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_game_service__ = __webpack_require__("../../../../../src/app/services/game.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_comment__ = __webpack_require__("../../../../../src/app/models/comment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_seller__ = __webpack_require__("../../../../../src/app/models/seller.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_game_service__ = __webpack_require__("../../../../../src/app/services/game.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1560,22 +1574,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
 var SearchGameListPageComponent = (function () {
     function SearchGameListPageComponent(gameService, router) {
         this.gameService = gameService;
         this.router = router;
-        this.comm = [new __WEBPACK_IMPORTED_MODULE_3__models_comment__["a" /* Comment */]('Exelente juego lo recomiendo para PSP', 'Laura Sanchez', 5, 1)];
-        this.seller1 = [new __WEBPACK_IMPORTED_MODULE_4__models_seller__["a" /* Seller */]('$359.900 ', 'www.Nintendo.com'), new __WEBPACK_IMPORTED_MODULE_4__models_seller__["a" /* Seller */]('$500 000 ', 'listado.mercadolibre.com.mx/juegos-de-mario-bros-gratis')];
-        this.games = [new __WEBPACK_IMPORTED_MODULE_1__models_game__["a" /* Game */](1, 'Super Mario Bros.', '/assets/images/mario.jpg ', this.comm, 'Is a platform video game, designed by Shigeru Miyamoto, released on September 13, 1985 and produced by the company Nintendo, for the Nintendo Entertainment System (NES). The game describes the adventures of brothers Mario and Luigi, characters who already starred in the arcade Mario Bros. of 1983.' +
-                ' This time both must rescue Princess Peach Mushroom Kingdom who was kidnapped by the King' +
-                ' of the Koopas, Bowser.', 5, this.seller1)];
     }
     SearchGameListPageComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.gameService.getGame(this.name).subscribe(function (gameResponse) {
+        var data = this.name = sessionStorage.getItem(name);
+        this.gameService.getGame('Need for speed').subscribe(function (gameResponse) {
             _this.game = gameResponse;
         });
     };
@@ -1587,7 +1594,7 @@ SearchGameListPageComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/searchGame-list-page/searchGame-list-page.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/searchGame-list-page/searchGame-list-page.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_game_service__["a" /* GameService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_game_service__["a" /* GameService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object])
 ], SearchGameListPageComponent);
 
 var _a, _b;
@@ -2029,7 +2036,7 @@ var GameService = (function (_super) {
         _this.config = config;
         _this.authService = authService;
         _this.http = http;
-        _this.resourceUrl = 'api/searchGame/';
+        _this.resourceUrl = 'searchGame/';
         return _this;
     }
     GameService.prototype.getGame = function (name) {
