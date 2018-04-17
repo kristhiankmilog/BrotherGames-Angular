@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
- homeForm: FormGroup;
+
+  private game: Game;
+  homeForm: FormGroup;
   constructor(public gameService: GameService,
     public formBuilder: FormBuilder,
     public router: Router
@@ -19,14 +21,21 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.homeForm = this.formBuilder.group({
-        name: '',
-
-  });
+      name: '',
+    });
   }
 
- onSubmit(){
-  sessionStorage.setItem('name', this.homeForm.get('name').value);
-  this.router.navigate(['/searchGame']);
+  onSubmit() {
+    //sessionStorage.setItem('name', this.homeForm.get('name').value);
+    //this.router.navigate(['/searchGame']);
+    console.log(this.homeForm.get('name').value);
+    this.gameService.getGame(
+      this.homeForm.get('name').value
+    ).subscribe(serverResponse => {
+      this.game = serverResponse
+    }, error => {
+      console.log(error);
+    });
 
-}
+  }
 }

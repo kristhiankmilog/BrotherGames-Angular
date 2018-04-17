@@ -12,7 +12,7 @@
     <p>Search Game</p>
     <form [formGroup]="homeForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="form-group">
-            <input type="text" class="form-control" size="50" id="name" placeholder="Search Game" required>
+            <input type="text" class="form-control" size="50" id="name" formControlName="name" placeholder="Search Game" required>
 
 
                 <button type="submit" class="btn btn-success" >Search</button>
@@ -20,6 +20,8 @@
             </div>
     </form>
 </div>
+
+
 
 <div id="about" class="container-fluid">
     <div class="row">
