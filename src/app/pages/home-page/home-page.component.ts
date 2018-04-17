@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  private game: Game;
+  private games: Game[]=[];
   homeForm: FormGroup;
   constructor(public gameService: GameService,
     public formBuilder: FormBuilder,
@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
     this.gameService.getGame(
       this.homeForm.get('name').value
     ).subscribe(serverResponse => {
-      this.game = serverResponse
+      this.games = serverResponse
     }, error => {
       console.log(error);
     });

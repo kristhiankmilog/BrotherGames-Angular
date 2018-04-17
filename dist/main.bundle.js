@@ -1238,7 +1238,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/home-page/home-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/css?family=Montserrat\" rel=\"stylesheet\" type=\"text/css\">\r\n    <link href=\"https://fonts.googleapis.com/css?family=Lato\" rel=\"stylesheet\" type=\"text/css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\r\n</head>\r\n\r\n\r\n<div class=\"jumbotron text-center\">\r\n    <h1>Brother Games</h1>\r\n    <p>Search Game</p>\r\n    <form [formGroup]=\"homeForm\" (ngSubmit)=\"onSubmit()\" novalidate>\r\n        <div class=\"form-group\">\r\n            <input type=\"text\" class=\"form-control\" size=\"50\" id=\"name\" formControlName=\"name\" placeholder=\"Search Game\" required>\r\n\r\n\r\n                <button type=\"submit\" class=\"btn btn-success\" >Search</button>\r\n\r\n            </div>\r\n    </form>\r\n</div>\r\n\r\n\r\n\r\n<div id=\"about\" class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-8\">\r\n            <h2>About Brother Games </h2><br>\r\n            <h4>On this page you can search, consult and exchange the video games you want, in addition to consulting the prices of each of them in the different internet gaming platforms.</h4>\r\n            <br>\r\n            <h4>To be able to exchange a game you must first register to be able to log in and make the exchange</h4>\r\n\r\n        </div>\r\n\r\n        <div id=\"centerbrand\">\r\n\r\n            <img id=\"brand\"  src=\"/assets/images/videojuegos.jpg\" width=\"300\" height=\"200\">\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "\r\n<head>\r\n    <link href=\"https://fonts.googleapis.com/css?family=Montserrat\" rel=\"stylesheet\" type=\"text/css\">\r\n    <link href=\"https://fonts.googleapis.com/css?family=Lato\" rel=\"stylesheet\" type=\"text/css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\r\n</head>\r\n\r\n\r\n<div class=\"jumbotron text-center\">\r\n    <h1>Brother Games</h1>\r\n    <p>Search Game</p>\r\n    <form [formGroup]=\"homeForm\" (ngSubmit)=\"onSubmit()\" novalidate>\r\n        <div class=\"form-group\">\r\n            <input type=\"text\" class=\"form-control\" size=\"50\" id=\"name\" formControlName=\"name\" placeholder=\"Search Game\" required>\r\n\r\n\r\n                <button type=\"submit\" class=\"btn btn-success\" >Search</button>\r\n\r\n            </div>\r\n    </form>\r\n</div>\r\n\r\n<div *ngFor=\"let game of games\" class=\"media\">\r\n    <h4 class=\"media-heading\">{{game.name}}</h4>\r\n</div>\r\n\r\n<div id=\"about\" class=\"container-fluid\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-8\">\r\n            <h2>About Brother Games </h2><br>\r\n            <h4>On this page you can search, consult and exchange the video games you want, in addition to consulting the prices of each of them in the different internet gaming platforms.</h4>\r\n            <br>\r\n            <h4>To be able to exchange a game you must first register to be able to log in and make the exchange</h4>\r\n\r\n        </div>\r\n\r\n        <div id=\"centerbrand\">\r\n\r\n            <img id=\"brand\"  src=\"/assets/images/videojuegos.jpg\" width=\"300\" height=\"200\">\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1269,6 +1269,7 @@ var HomePageComponent = (function () {
         this.gameService = gameService;
         this.formBuilder = formBuilder;
         this.router = router;
+        this.games = [];
     }
     HomePageComponent.prototype.ngOnInit = function () {
         this.homeForm = this.formBuilder.group({
@@ -1281,7 +1282,7 @@ var HomePageComponent = (function () {
         //this.router.navigate(['/searchGame']);
         console.log(this.homeForm.get('name').value);
         this.gameService.getGame(this.homeForm.get('name').value).subscribe(function (serverResponse) {
-            _this.game = serverResponse;
+            _this.games = serverResponse;
         }, function (error) {
             console.log(error);
         });

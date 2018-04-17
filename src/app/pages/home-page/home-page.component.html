@@ -21,7 +21,9 @@
     </form>
 </div>
 
-
+<div *ngFor="let game of games" class="media">
+    <h4 class="media-heading">{{game.name}}</h4>
+</div>
 
 <div id="about" class="container-fluid">
     <div class="row">

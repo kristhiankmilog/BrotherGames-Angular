@@ -22,7 +22,7 @@ export class GameService extends APIService {
         super(config, authService, http);
     }
 
-    getGame(name: string): Observable<Game> {
+    getGame(name: string): Observable<Game[]> {
         return this.get(this.resourceUrl + name);
 
     }

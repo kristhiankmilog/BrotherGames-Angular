@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class SearchGameListPageComponent implements OnInit {
 
-    private game:Game
+    private game:Game[]
      private name:string
     constructor( public gameService:GameService,
                  public router: Router ) { }
